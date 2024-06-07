@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>The result of your choice</title>
+</head>
+<body class="result-background">
+    <div class="overlay"></div>
+    <div class="result-content">
+        <h1>Here is your jewelry!</h1>
+                <h2>What do you get with the jewelry?</h2>
+                    <p>Together with jewelry, you get not only a beautiful accessory, but also an opportunity to express yourself,
+                        emphasize your style and add confidence. Jewelry can become a symbol of important life moments
+                        and give pleasant memories. In addition, many ornaments have a high material value and
+                        can be a good investment.
+                    </p>
+        {% for item in jewelry %}
+            <div class="result-image">
+                <h2>{{ item.category }} - {{ item.type }} - {{ item.color }}</h2>
+                <img src="{{ url_for('static', filename='images/'+item.image) }}" alt="{{ item.category }} - {{ item.type }} - {{ item.color }}">
+            </div>
+        {% endfor %}
+        <a href="{{ url_for('category') }}">Start over</a>
+    </div>
+</body>
+</html>

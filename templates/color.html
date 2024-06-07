@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Color selection</title>
+</head>
+<body class="color-background">
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>Choose a color for jewelry {{ category }} - {{ type }}</h1>
+                <h2>What color is better to choose?</h2>
+                    <p>The color of the decoration should be chosen depending on the color scheme of your clothes and your appearance.
+                        Gold jewelry goes well with warm tones and looks great on tanned skin.
+                        Silver and white metal are suitable for cold tones and look very elegant.
+                        Black jewelry adds mystery and is suitable for evening outings.
+                    </p>
+        <form action="{{ url_for('results') }}" method="post">
+            <input type="hidden" name="category" value="{{ category }}">
+            <input type="hidden" name="type" value="{{ type }}">
+            {% for color in colors %}
+                <button type="submit" name="color" value="{{ color }}">{{ color }}</button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Category selection</title>
+</head>
+<body class="category-background">
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>Choose a category</h1>
+                <h2>You can choose jewelry as needed, for example, for a wedding, a gift, or a date.</h2>
+                    <p>Jewelry is chosen depending on a specific need or event. For a wedding, you should choose something elegant and sophisticated,
+                        that will complement the wedding image. For a gift, jewelry that conveys warm feelings and is universal is suitable.
+                        For a date, you can choose something more personal that will emphasize your individuality and create a romantic one
+                        mood.
+                    </p>
+        <form action="{{ url_for('type') }}" method="post">
+            {% for category in categories %}
+                <button type="submit" name="category" value="{{ category }}">{{ category }}</button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

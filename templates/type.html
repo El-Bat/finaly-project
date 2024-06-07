@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Type selection</title>
+</head>
+<body class="type-background">
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>Choose a type of jewelry for {{ category }}</h1>
+                <h2>What is better to choose: earrings or a gift set?</h2>
+                    <p>The choice between earrings and a gift set depends on the style of clothing and the occasion.
+                        Earrings add shine and can emphasize facial features.
+                        A necklace can not only complement earrings, but can also become the central element of your image, especially
+                        if you choose something refined and elegant.
+                    </p>
+        <form action="{{ url_for('color') }}" method="post">
+            <input type="hidden" name="category" value="{{ category }}">
+            {% for type in types %}
+                <button type="submit" name="type" value="{{ type }}">{{ type }}</button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>
